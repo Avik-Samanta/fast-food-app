@@ -19,7 +19,5 @@ export default function RootLayout() {
     if (fontsLoaded) SplashScreen.hideAsync();
   }, [fontsLoaded, error]);
 
-  if (!fontsLoaded && !error) return null;
-
   return <Stack screenOptions={{ headerShown: false }} />;
 }
