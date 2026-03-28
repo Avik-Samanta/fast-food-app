@@ -1,10 +1,12 @@
 import arrowDown from "@/assets/icons/arrow-down.png";
 import arrowRight from "@/assets/icons/arrow-right.png";
+import blackbag from "@/assets/icons/bag-black.png";
 import bag from "@/assets/icons/bag.png";
 import check from "@/assets/icons/check.png";
 import clock from "@/assets/icons/clock.png";
 import dollar from "@/assets/icons/dollar.png";
 import envelope from "@/assets/icons/envelope.png";
+import blackhome from "@/assets/icons/home-black.png";
 import home from "@/assets/icons/home.png";
 import location from "@/assets/icons/location.png";
 import logout from "@/assets/icons/logout.png";
@@ -183,11 +185,13 @@ export const images = {
   arrowDown,
   arrowRight,
   bag,
+  blackbag,
   check,
   clock,
   dollar,
   envelope,
   home,
+  blackhome,
   location,
   logout,
   minus,
