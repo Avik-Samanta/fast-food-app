@@ -91,7 +91,7 @@ export const getMenu = async ({ category, query }: GetMenuParams) => {
     const queries: string[] = [];
 
     if (category) queries.push(Query.equal("categories", category));
-    if (query) queries.push(Query.search("name", query));
+    if (query) queries.push(Query.equal("name", query));
 
     const menus = await databases.listDocuments(
       appwriteConfig.databaseId,
@@ -100,8 +100,8 @@ export const getMenu = async ({ category, query }: GetMenuParams) => {
     );
 
     return menus.documents;
-  } catch (e) {
-    throw new Error(e as string);
+  } catch (error) {
+    throw new Error(error as string);
   }
 };
 
@@ -111,9 +111,7 @@ export const getCategories = async () => {
       appwriteConfig.databaseId,
       appwriteConfig.categoriesCollectionId,
     );
-
-    return categories.documents;
-  } catch (e) {
-    throw new Error(e as string);
+  } catch (error) {
+    throw new Error(error as string);
   }
 };

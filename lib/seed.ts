@@ -76,12 +76,14 @@ async function uploadImageToStorage(imageUrl: string) {
     };
 
     const file = await storage.createFile(
-      appwriteConfig.bucketId,
-      ID.unique(),
-      fileObj,
-    );
+    appwriteConfig.bucketId,
+    ID.unique(),
+    fileObj,
+    ['read("any")'],
+  );
 
-    return storage.getFileViewURL(appwriteConfig.bucketId, file.$id);
+    // `getFileViewURL` returns a URL object in this SDK; persist as plain string.
+    return storage.getFileViewURL(appwriteConfig.bucketId, file.$id).toString();
   } catch (error) {
     console.log("⚠️ Image upload failed; using original URL:", imageUrl, error);
     return imageUrl;
