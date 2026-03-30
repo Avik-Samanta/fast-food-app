@@ -1,11 +1,12 @@
 import TabBarIcon from "@/components/TabBarIcon";
 import { images } from "@/constants";
+import useAuthStore from "@/store/auth.store";
 import { Redirect, Tabs } from "expo-router";
 
 export default function TabLayout() {
-  const isAuthenticated = true;
+  const { isAuthenticate } = useAuthStore();
 
-  if (!isAuthenticated) return <Redirect href={"/sign-in"} />;
+  if (!isAuthenticate) return <Redirect href={"/sign-in"} />;
   return (
     <Tabs
       screenOptions={{
