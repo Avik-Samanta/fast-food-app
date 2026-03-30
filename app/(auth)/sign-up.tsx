@@ -23,7 +23,7 @@ export default function SignUp() {
         password: form.password,
       });
 
-      router.push("/");
+      router.replace("/");
     } catch (error: any) {
       Alert.alert("error", error.message);
     } finally {
