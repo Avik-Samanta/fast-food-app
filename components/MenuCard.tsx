@@ -31,7 +31,7 @@ export default function MenuCard({
       >
         {name}
       </Text>
-      <Text className="text-gray-200 body-regular mb-4">From ${price}</Text>
+      <Text className="text-gray-200 body-regular mb-4">From ₹{price}</Text>
       <TouchableOpacity onPress={() => {}}>
         <Text className="paragraph-bold text-primary">Add to Cart +</Text>
       </TouchableOpacity>

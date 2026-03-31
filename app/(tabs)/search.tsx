@@ -1,8 +1,9 @@
 import CartButton from "@/components/CartButton";
+import Filter from "@/components/Filter";
 import MenuCard from "@/components/MenuCard";
 import { getCategories, getMenu } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
-import { MenuItem } from "@/type";
+import { Category, MenuItem } from "@/type";
 import cn from "clsx";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
@@ -67,7 +68,9 @@ export default function Search() {
 
                 <CartButton />
               </View>
-              <Text>search input</Text>
+              <Filter
+                categories={(categories as unknown as Category[]) ?? []}
+              />
               <Text>filter</Text>
             </View>
           );
