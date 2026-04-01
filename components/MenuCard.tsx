@@ -1,15 +1,15 @@
+import { appwriteConfig } from "@/lib/appwrite";
+import { useCartStore } from "@/store/cart.store";
 import { MenuItem } from "@/type";
 import { Image, Platform, Text, TouchableOpacity } from "react-native";
 
-export default function MenuCard({
+const MenuCard = ({
   item: { $id, image_url, name, price },
 }: {
   item: MenuItem;
-}) {
-  const imageUrl =
-    typeof image_url === "string"
-      ? image_url.trim()
-      : String((image_url as unknown as { href?: string })?.href ?? "").trim();
+}) => {
+  const imageUrl = `${image_url}?project=${appwriteConfig.projectId}`;
+  const { addItem } = useCartStore();
 
   return (
     <TouchableOpacity
@@ -31,10 +31,21 @@ export default function MenuCard({
       >
         {name}
       </Text>
-      <Text className="text-gray-200 body-regular mb-4">From ₹{price}</Text>
-      <TouchableOpacity onPress={() => {}}>
+      <Text className="body-regular text-gray-200 mb-4">From ${price}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          addItem({
+            id: $id,
+            name,
+            price,
+            image_url: imageUrl,
+            customizations: [],
+          })
+        }
+      >
         <Text className="paragraph-bold text-primary">Add to Cart +</Text>
       </TouchableOpacity>
     </TouchableOpacity>
   );
-}
+};
+export default MenuCard;
