@@ -1,6 +1,7 @@
 import CartButton from "@/components/CartButton";
 import Filter from "@/components/Filter";
 import MenuCard from "@/components/MenuCard";
+import SearchBar from "@/components/SearchBar";
 import { getCategories, getMenu } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import { Category, MenuItem } from "@/type";
@@ -68,10 +69,12 @@ export default function Search() {
 
                 <CartButton />
               </View>
+
+              <SearchBar />
+
               <Filter
                 categories={(categories as unknown as Category[]) ?? []}
               />
-              <Text>filter</Text>
             </View>
           );
         }}
